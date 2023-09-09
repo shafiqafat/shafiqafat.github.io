@@ -1,7 +1,7 @@
 ## Fresh Graduate
 
 ### Education
-- BSc in CSE, Southeast University | CGPA: 3.64 Out of 4.00 | (_2020-2023_)
+- BSc in CSE, Southeast University | CGPA: 3.64 | (_2020-2023_)
 
 
 ### Technical Skills
