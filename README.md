@@ -1,10 +1,8 @@
-# Fresh Graduate
+## Fresh Graduate
 
 ### Education
-Bachelor of Science in Computer Science and Engineering
+- BSc in CSE, Southeast University | CGPA: 3.64 Out of 4.00 | (_2020-2023_)
 
-CGPA: 3.64 Out of 4.00
-Southeast University | 2020-2023
 
 ### Technical Skills
 -Python
