@@ -2,6 +2,7 @@
 
 ### Education
 Bachelor of Science in Computer Science and Engineering
+
 CGPA: 3.64 Out of 4.00
 Southeast University | 2020-2023
 
