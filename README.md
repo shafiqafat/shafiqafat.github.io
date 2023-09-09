@@ -15,7 +15,7 @@ Southeast University | 2020-2023
 -Excel
 -Tableau
 
-#### Soft skills
+### Soft Skills
 -Communication
 -Teamwork
 -Machine Learning
