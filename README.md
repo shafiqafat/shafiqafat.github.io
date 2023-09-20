@@ -5,7 +5,7 @@
 
 
 ### Technical Skills
--Python
+Python
 -MySQL
 -HTML5
 -Algorithm
@@ -15,7 +15,7 @@
 -Tableau
 
 ### Soft Skills
--Communication
+Communication
 -Teamwork
 -Machine Learning
 -Critical Thinking
