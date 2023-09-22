@@ -27,6 +27,8 @@ Communication
 ### Academic Research
 - A Critical Study on SelectedClassification Algorithms for LiverDisease Diagnosis
 
+_includes/head-custom-google-analytics.html
+
 ### Certificates
 - SQL(Basic)
 
