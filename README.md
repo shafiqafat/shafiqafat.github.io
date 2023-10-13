@@ -6,7 +6,8 @@
 
 ### Experience
 
-QA Intern - Functional testing | a1qa | (_Oct_2023-Dec_2023_)
+- QA Intern - Functional testing at a1qa | (_Oct_2023-Dec_2023_)
+
 
 ### Technical Skills
 Python
