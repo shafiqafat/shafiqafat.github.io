@@ -4,6 +4,10 @@
 - BSc in CSE, Southeast University | CGPA: 3.64 | (_2020-2023_)
 
 
+### Experience
+
+QA Intern - Functional testing | a1qa | (_Oct_2023-Dec_2023)
+
 ### Technical Skills
 Python
 -MySQL
@@ -13,6 +17,7 @@ Python
 -JavaScript
 -Excel
 -Tableau
+
 
 ### Soft Skills
 Communication
