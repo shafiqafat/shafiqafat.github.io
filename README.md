@@ -36,7 +36,9 @@ Communication
 
 ### Certificates
 - SQL(Basic)
+- CS50's Introduction to Programming with Python
 
 ### Projects
+- Digital Clock using Python
 - Car Sale Analysis
 - AirBnB Analysis
