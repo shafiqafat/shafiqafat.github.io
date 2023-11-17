@@ -34,3 +34,14 @@
     $('.social-links a').tooltip();
 
 })(jQuery);
+
+// showResume() function
+// const body = document.body
+
+function showResume() {
+  var resumePdf = document.getElementById('resume-contact');
+  var resumePdfPath = "/resume/mohammad_shafiqur_rahman_resume.pdf";
+  window.open(resumePdfPath, '_blank');
+}
+
+
