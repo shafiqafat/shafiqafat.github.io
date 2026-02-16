@@ -1,324 +1,92 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mohammad Shafiqur Rahman</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/unicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="src/assets/images/favicon.ico" />
 
-    <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="css/tooplate-style.css">
-    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio of Mohammad Shafiqur Rahman, a creative UI/UX designer specializing in user-centered digital experiences, web design, and branding." />
+    <meta name="keywords" content="UI designer, UX designer, Mohammad Shafiqur Rahman, portfolio, web design, user experience, user interface, branding, creative designer" />
+    <meta name="author" content="Mohammad Shafiqur Rahman" />
+    <meta property="og:title" content="Mohammad Shafiqur Rahman – UI/UX Designer" />
+    <meta property="og:description" content="Explore the portfolio and works of Mohammad Shafiqur Rahman, a passionate UI/UX designer." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="src/assets/images/og-image.jpg" />
+    <!-- <meta property="og:url" content="https://your-portfolio-url.com/" /> -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mohammad Shafiqur Rahman – UI/UX Designer" />
+    <meta name="twitter:description" content="Portfolio of Mohammad Shafiqur Rahman, creative UI/UX designer." />
+    <meta name="twitter:image" content="src/assets/images/og-image.jpg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+            colors: {
+              "brand-green": "#00FF00",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="src/assets/styles.css" />
   </head>
-  <body>
-
-    <!-- MENU -->
-    <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><i class='uil uil-user'></i> Shafique</a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link"><span data-hover="About">About</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#project" class="nav-link"><span data-hover="Projects">Projects</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#education" class="nav-link"><span data-hover="Education">Education</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link"><span data-hover="Contact">Contact</span></a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav ml-lg-auto">
-                    <div class="ml-lg-4">
-                      <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
-                        <!-- Uncomment this when needed text beside ligt->dark mode: Color mode -->
-                      </div>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ABOUT -->
-    <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
-                    <div class="about-text">
-                        <small class="small-text">Welcome to <span class="mobile-block">my portfolio website!</span></small>
-                        <h1 class="animated animated-text">
-                            <span class="mr-2">Hey folks, I'm</span>
-                                <div class="animated-info">
-                                    <span class="animated-item">Shafique</span>
-                                    <span class="animated-item">Network Engineer</span>
-                                </div>
-                        </h1><br>
-
-                        <p>Building a successful product is a challenge. I am highly energetic in user experience design, interfaces and web development.</p>
-                        
-                        <div class="custom-btn-group mt-4" id="resume-contact">
-                          <a onclick="showResume()" class="btn mr-lg-2 custom-btn"><i class='uil uil-file-alt'></i> Download Resume</a>
-                          <a href="#contact" class="btn custom-btn custom-btn-bg custom-btn-link">Contact</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-12 col-12">
-                    <div class="about-image svg">
-                        <img src="images/undraw/Working-rafiki.svg" class="img-fluid" alt="svg image">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="project py-5" id="project">
-        <div class="container">
-                
-                <div class="row">
-                  <div class="col-lg-11 text-center mx-auto col-12">
-
-                      <div class="col-lg-8 mx-auto">
-                        <h2>Things I have designed for learning purpose</h2>
-                      </div>
-
-                      <div class="owl-carousel owl-theme">
-                        <div class="item">
-                          <div class="project-info">
-                            <img src="images/project/Coffee shop.png" class="img-fluid" alt="E-commerce site">
-                          </div>
-                        </div>
-
-                        <div class="item">
-                          <div class="project-info">
-                            <img src="images/project/Desktop1.png" class="img-fluid" alt="project image">
-                          </div>
-                        </div>
-
-                        <div class="item">
-                          <div class="project-info">
-                            <img src="images/project/Dashboard.png" class="img-fluid" alt="project image">
-                          </div>
-                        </div>
-
-                        <div class="item">
-                          <div class="project-info">
-                            <img src="images/project/project 2.png" class="img-fluid" alt="WeatherApp">
-                          </div>
-                        </div>
-
-                        <div class="item">
-                          <div class="project-info">
-                            <img src="images/project/Project-3.png" class="img-fluid" alt="project image">
-                          </div>
-                        </div>
-                      </div>
-
-                  </div>
-                </div>
-        </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="education">
-        <div class="container">
-            <div class="row">
-               <div class="col-lg-6 col-12">
-                  <h2 class="mb-4">Experiences</h2>
-
-                    <div class="timeline">
-                        <div class="timeline-wrapper">
-                             <div class="timeline-yr">
-                                  <span>2024</span>
-                             </div>
-                             <div class="timeline-info">
-                                  <h3><span>Associate</span><small>Acote Group</small></h3>
-                                  <p>
-• Image Annotation 
-• Text Annotation 
-• Data labeling
-• Ensuring Quality of the task.
-• Team Management.
-• Reporting to the Project Manager.
-</p>
-                             </div>
-                        </div>
-
-                      <!--
-                      <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2018</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>UX Designer</span><small>Digital Ace</small></h3>
-                                <p>Fusce rutrum augue id orci rhoncus molestie. Nunc auctor dignissim lacus vel iaculis.</p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2016</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>UI Freelancer</h3>
-                                <p>Sed fringilla vitae enim sit amet cursus. Sed cursus dictum tortor quis pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2014</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>Junior Designer<small>Crafted Co.</small></h3>
-                                <p>Cras scelerisque scelerisque condimentum. Nullam at volutpat mi. Nunc auctor ipsum eget magna consequat viverra.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              -->
-                <div class="col-lg-6 col-12">
-                  <h2 class="mb-4 mobile-mt-2">Educations</h2>
-
-                    <div class="timeline">
-                        <div class="timeline-wrapper">
-                             <div class="timeline-yr">
-                                  <span>2024</span>
-                             </div>
-                             <div class="timeline-info">
-                                  <h3><span>BSc in Computer Science and Engineering</span><br><small>Southeast University,Bangladesh</small></h3>
-                                  <p>Year of Graduation: 2024<br>CGPA: 3.63 out of 4.00</p>
-                             </div>
-                        </div>
-
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2018</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>Higher Secondary Certificate(HSC)</span><small>Shaheed Ramijuddin Cantonment College,Dhaka</small></h3>
-                                <p>Group: Science<br> GPA: 4.42 out of 5.00</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr">
-                                <span>2016</span>
-                            </div>
-                            <div class="timeline-info">
-                                <h3><span>Secondary School Certificate(SSC)</h3><h4><small>Civil Aviation High Schools,Dhaka</small></h4></span>
-                                <p>Group: Science<br> GPA: 5.00 out of 5.00</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact py-5" id="contact">
-      <div class="container">
-        <div class="row">
-          
-          <div class="col-lg-5 mr-lg-5 col-12">
-            <div class="google-map w-100">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d406.3919645622801!2d90.41593260048462!3d23.844315858136166!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1700150449346!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            </br>
-            <div class="contact-info d-flex justify-content-between align-items-center py-4 px-lg-5">
-                <div class="contact-info-item">
-                  <h3 class="mb-3 text-white">Say Hello</h3>
-                  <p class="footer-text mb-0"><a href="tel:++8801534282793">+880 1534282793</a></p>
-                  <p><a href="mailto:Srahman0123@gmail.com">Srahman0123@gmail.com</a></p>
-                  <p><a href="https://www.linkedin.com/in/shafiq-afat/">Linkedin</a></p>
-                </div>
-
-                <ul class="social-links">
-                     <li><a href="https://github.com/shafiqafat" class="uil uil-dribbble" data-toggle="tooltip" data-placement="left" title="Github"></a></li>
-                     <li><a href="https://www.instagram.com/shafiq_afat/" class="uil uil-instagram" data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
-                     <li><a href="https://www.facebook.com/shafiq.afat" class="uil uil-facebook" data-toggle="tooltip" data-placement="left" title="Facebook"></a></li>
-                </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-12">
-            <div class="contact-form">
-              <h2 class="mb-4">Interested to work together? Let's talk</h2>
-
-              <form action="" method="get">
-                <div class="row">
-                  <div class="col-lg-6 col-12">
-                    <input type="text" class="form-control" name="name" placeholder="Your Name" id="name">
-                  </div>
-
-                  <div class="col-lg-6 col-12">
-                    <input type="email" class="form-control" name="email" placeholder="Email" id="email">
-                  </div>
-
-                  <div class="col-12">
-                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
-                  </div>
-
-                  <div class="ml-lg-auto col-lg-5 col-12">
-                    <input type="submit" class="form-control submit-btn" value="Submit">
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
+  <body class="font-poppins bg-white">
+    <div id="app">
+      <!-- Loading state while Vue initializes -->
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="text-center">
+          <div class="spinner mx-auto mb-4"></div>
+          <p class="text-gray-600">Awesomeness Loading...</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
-     <footer class="footer py-5">
-          <div class="container">
-               <div class="row">
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-                    <div class="col-lg-12 col-12">                                
-                        <p class="copyright-text text-center">Copyright &copy; 2025 Mohammad Shafiqur Rahman. All rights reserved</p>
-                        <p class="copyright-text text-center">Designed by <a rel="nofollow" href="https://www.facebook.com/shafiq.afat">A_fat</a></p>
-                    </div>
-                    
-               </div>
-          </div>
-     </footer>
+    <!-- Load all component files in order -->
+    <script src="src/components/NavigationComponent.js"></script>
+    <script src="src/components/HeroSection.js"></script>
+    <script src="src/components/ExperienceSection.js"></script>
+    <script src="src/components/AboutSection.js"></script>
+    <script src="src/components/ProjectsSection.js"></script>
+    <script src="src/components/TestimonialsSection.js"></script>
+    <script src="src/components/ContactSection.js"></script>
+    <script src="src/components/FooterComponent.js"></script>
+    <script src="src/components/ScrollToTop.js"></script>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/Headroom.js"></script>
-    <script src="js/jQuery.headroom.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/custom.js"></script>
+    <!-- Main App - Load last -->
+    <script src="src/main.js"></script>
   </body>
 </html>
