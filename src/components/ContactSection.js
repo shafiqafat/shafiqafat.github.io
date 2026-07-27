@@ -23,7 +23,7 @@ const ContactSection = {
                         <div class="space-y-6 mb-8">
                             <div>
                                 <a 
-                                    href="mailto:Srahman0125@gmail.com"
+                                    href="mailto:Srahman0123@gmail.com"
                                     class="text-xl lg:text-2xl font-semibold hover:text-gray-600 transition-colors flex items-center"
                                 >
                                     <svg class="w-6 h-6 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
