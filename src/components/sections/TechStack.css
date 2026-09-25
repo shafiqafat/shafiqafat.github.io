@@ -1,0 +1,266 @@
+.skills {
+  background: var(--color-ink);
+  color: var(--color-bone);
+
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.skills__header {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+
+  gap: 4rem;
+
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.skills .section__eyebrow {
+  color: rgba(238, 234, 226, 0.5);
+}
+
+
+.skills__title {
+  max-width: 850px;
+
+  margin: 1rem 0 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 600;
+
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+
+  color: var(--color-bone);
+}
+
+.skills__title span {
+  display: block;
+
+  color: rgba(238, 234, 226, 0.38);
+}
+
+
+.skills__intro {
+  max-width: 360px;
+
+  align-self: end;
+
+  margin: 0;
+
+  color: rgba(238, 234, 226, 0.6);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   GROUPS
+   ========================================================= */
+
+.skills__groups {
+  border-top: 1px solid rgba(238, 234, 226, 0.16);
+}
+
+
+.skills__group {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+
+  gap: 3rem;
+
+  padding: 2.5rem 0;
+
+  border-bottom: 1px solid rgba(238, 234, 226, 0.16);
+}
+
+
+/* =========================================================
+   GROUP INFORMATION
+   ========================================================= */
+
+.skills__group-top {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  column-gap: 1rem;
+  align-content: start;
+}
+
+
+.skills__number {
+  grid-column: 1;
+
+  color: rgba(238, 234, 226, 0.38);
+
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+
+.skills__group-title {
+  grid-column: 2;
+
+  margin: 0;
+
+  color: var(--color-bone);
+
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+
+.skills__group-description {
+  grid-column: 2;
+
+  max-width: 340px;
+
+  margin: 1rem 0 0;
+
+  color: rgba(238, 234, 226, 0.48);
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+
+.skills__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 0.5rem;
+
+  align-content: start;
+}
+
+
+.skill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 58px;
+
+  padding: 0.9rem 1rem;
+
+  border: 1px solid rgba(238, 234, 226, 0.11);
+  border-radius: var(--radius-sm);
+
+  color: rgba(238, 234, 226, 0.78);
+
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+
+  cursor: default;
+
+  transition:
+    transform 220ms var(--ease-standard),
+    background 220ms var(--ease-standard),
+    border-color 220ms var(--ease-standard),
+    color 220ms var(--ease-standard);
+}
+
+
+.skill__arrow {
+  color: rgba(238, 234, 226, 0.25);
+
+  transform: translate(-3px, 3px);
+
+  transition:
+    transform 220ms var(--ease-standard),
+    color 220ms var(--ease-standard);
+}
+
+
+.skill:hover {
+  transform: translateY(-3px);
+
+  background: rgba(238, 234, 226, 0.055);
+
+  border-color: rgba(47, 95, 246, 0.55);
+
+  color: var(--color-bone);
+}
+
+
+.skill:hover .skill__arrow {
+  color: var(--color-signal);
+
+  transform: translate(0, 0);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .skills__header {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+  }
+
+  .skills__intro {
+    align-self: start;
+  }
+
+  .skills__group {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .skills {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .skills__title {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .skills__group {
+    padding: 2rem 0;
+  }
+
+  .skills__list {
+    grid-template-columns: 1fr;
+  }
+
+  .skill {
+    min-height: 54px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .skill {
+    transition: none;
+  }
+}

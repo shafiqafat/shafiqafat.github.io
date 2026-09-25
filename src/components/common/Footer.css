@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: space-between;
+  padding: var(--space-3) var(--content-pad);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+.footer__socials {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.footer__socials a:hover {
+  color: var(--color-signal);
+}

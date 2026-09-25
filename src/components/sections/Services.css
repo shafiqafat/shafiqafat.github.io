@@ -1,0 +1,55 @@
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.services__card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  background: var(--color-bone);
+  /* the base state darkens slightly on hover, immediately */
+  transition: background var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard);
+}
+
+.services__card:hover {
+  background: #E6E1D6;
+  border-color: var(--color-line);
+}
+
+.services__card h3,
+.services__card p {
+  position: relative;
+  z-index: 1;
+}
+
+.services__card h3 {
+  margin-bottom: var(--space-1);
+}
+
+/* the glow: positioned at the cursor's entry point via --mx/--my,
+   fades in with a deliberate delay so it reads as a beat *after* the
+   hover, not simultaneous with it */
+.services__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(47, 95, 246, 0.16),
+    transparent 70%
+  );
+  transition: opacity 700ms var(--ease-standard);
+  transition-delay: 0ms;
+}
+
+.services__card:hover .services__glow {
+  opacity: 1;
+  transition-delay: 180ms;
+}

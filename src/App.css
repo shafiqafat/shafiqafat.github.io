@@ -1,0 +1,57 @@
+.section {
+  padding: var(--space-6) var(--content-pad);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  margin-bottom: var(--space-2);
+}
+
+.section-inspo-note {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  border-left: 2px solid var(--color-signal);
+  padding-left: var(--space-2);
+  margin-top: var(--space-3);
+  max-width: 60ch;
+}
+
+
+/* Testimonials */
+.testimonials__stack-placeholder {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.testimonials__stack-placeholder blockquote {
+  margin: 0;
+  border-left: 2px solid var(--color-signal);
+  padding-left: var(--space-3);
+}
+
+.testimonials__stack-placeholder cite {
+  display: block;
+  margin-top: var(--space-1);
+  font-style: normal;
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+/* Contact */
+.contact__cta {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  color: var(--color-signal);
+}

@@ -1,0 +1,436 @@
+/* =========================================================
+   NAVBAR
+   Cloudfolio-inspired centered menu button
+   ========================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 1.75rem 1rem;
+
+  pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   CLOSED MENU BUTTON
+   --------------------------------------------------------- */
+
+.navbar__menu-btn {
+  pointer-events: auto;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 16px 24px 16px 24px;
+
+  border: 1px solid rgba(238, 234, 226, 0.08);
+  border-radius: 6px;
+
+  background: rgba(29, 48, 67, 0.92);
+  color: var(--color-bone);
+
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.navbar__menu-btn:hover {
+  background: rgba(39, 60, 81, 0.96);
+  border-color: rgba(238, 234, 226, 0.16);
+}
+
+.navbar__menu-btn:active {
+  transform: scale(0.97);
+}
+
+
+/* Hamburger */
+
+.navbar__menu-icon {
+  width: 17px;
+  height: 14px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.navbar__menu-icon span {
+  display: block;
+
+  width: 17px;
+  height: 1.5px;
+
+  background: currentColor;
+}
+
+
+/* =========================================================
+   FULLSCREEN OVERLAY
+   ========================================================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 200;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding:
+    clamp(1.5rem, 4vw, 4rem)
+    clamp(1rem, 4vw, 3rem);
+
+  overflow-y: auto;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(48, 72, 96, 0.32),
+      transparent 45%
+    ),
+    rgba(7, 20, 34, 0.94);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   MENU PANEL
+   ========================================================= */
+
+.menu-overlay__panel {
+  width: min(100%, 680px);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.55rem;
+
+  margin-top: 0.5rem;
+}
+
+
+/* ---------------------------------------------------------
+   PANEL HEADER
+   --------------------------------------------------------- */
+
+.menu-overlay__header {
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  border: 1px solid rgba(238, 234, 226, 0.06);
+  border-radius: 6px;
+
+  background: rgba(30, 48, 66, 0.92);
+  color: var(--color-bone);
+
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* ---------------------------------------------------------
+   CLOSE BUTTON
+   --------------------------------------------------------- */
+
+.menu-overlay__close {
+  position: relative;
+
+  width: 24px;
+  height: 24px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--color-bone);
+
+  cursor: pointer;
+}
+
+.menu-overlay__close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 18px;
+  height: 1.5px;
+
+  background: currentColor;
+
+  transform-origin: center;
+}
+
+.menu-overlay__close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menu-overlay__close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.menu-overlay__close:hover {
+  color: var(--color-signal);
+}
+
+
+/* =========================================================
+   MENU BODY
+   ========================================================= */
+
+.menu-overlay__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 330px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(238, 234, 226, 0.06);
+  border-radius: 6px;
+
+  background: rgba(30, 48, 66, 0.92);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+   ========================================================= */
+
+.menu-overlay__links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1.45rem 1.25rem 1.2rem;
+
+  color: var(--color-bone);
+}
+
+.menu-overlay__links ul {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.72rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.menu-overlay__links li {
+  margin: 0;
+  padding: 0;
+}
+
+.menu-overlay__links li a {
+  display: inline-block;
+
+  color: rgba(238, 234, 226, 0.94);
+
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.menu-overlay__links li a:hover {
+  color: white;
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   CONTACT BUTTON
+   ========================================================= */
+
+.menu-overlay__cta {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.82rem 0.95rem;
+
+  border-radius: 6px;
+
+  background: var(--color-bone);
+  color: var(--color-ink);
+
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.menu-overlay__cta:hover {
+  background: white;
+  color: var(--color-ink);
+  transform: translateY(-1px);
+}
+
+.menu-overlay__cta span:last-child {
+  font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   PORTRAIT
+   ========================================================= */
+
+.menu-overlay__portrait {
+  position: relative;
+
+  min-height: 330px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(10, 18, 27, 0.28),
+      transparent 45%
+    ),
+    #17283a;
+}
+
+
+/*
+  Temporary placeholder.
+
+  Replace this element's background/image once
+  you provide your portrait.
+*/
+
+.menu-overlay__portrait-placeholder {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(47, 95, 246, 0.28),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #23384d,
+      #142333
+    );
+
+  color: rgba(238, 234, 226, 0.16);
+
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 600;
+}
+
+.menu-overlay__portrait-placeholder span {
+  transform: rotate(-8deg);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 639px) {
+  .navbar {
+    padding-top: 1rem;
+  }
+
+  .menu-overlay {
+    padding:
+      1rem
+      0.85rem;
+  }
+
+  .menu-overlay__panel {
+    margin-top: 0;
+  }
+
+  .menu-overlay__body {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+  }
+
+  .menu-overlay__links {
+    min-height: 380px;
+  }
+
+  .menu-overlay__portrait {
+    min-height: 240px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__menu-btn,
+  .menu-overlay__links li a,
+  .menu-overlay__cta {
+    transition: none;
+  }
+}

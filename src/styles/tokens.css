@@ -1,0 +1,54 @@
+/*
+  DESIGN TOKENS — placeholder pass
+  ---------------------------------
+  Direction: "engineered warmth" — a frontend engineer's portfolio should feel
+  precise and technical, not decorative. Bone/ink base with a single cobalt
+  signal color (code-editor blue, not a generic SaaS purple/terracotta).
+  Revisit during the full visual design pass — these are working values.
+*/
+
+:root {
+  /* Color */
+  --color-bone: #EEEAE2;       /* base background, warm paper */
+  --color-ink: #16161A;        /* primary text / dark surfaces */
+  --color-ink-soft: #4A4A52;   /* secondary text on light */
+  --color-paper-soft: #E3DED2; /* subtle section separation on light */
+  --color-signal: #2F5FF6;     /* accent — links, focus, highlight-on-scroll */
+  --color-signal-dim: #C9D6FF; /* tint of signal for backgrounds */
+  --color-line: #D8D2C4;       /* hairline borders/dividers */
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Arial Narrow', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+
+  --fs-h1: clamp(2.75rem, 6vw, 5.5rem);
+  --fs-h2: clamp(2rem, 4vw, 3.25rem);
+  --fs-h3: clamp(1.375rem, 2.2vw, 1.75rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.875rem;
+
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+
+  /* Spacing scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6.5rem;
+  --space-7: 10rem;
+
+  /* Layout */
+  --content-max: 1200px;
+  --content-pad: clamp(1.25rem, 5vw, 3rem);
+  --radius-sm: 6px;
+  --radius-md: 14px;
+
+  /* Motion (placeholders — real easings land with GSAP/Framer Motion pass) */
+  --ease-standard: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 200ms;
+  --dur-base: 400ms;
+}
