@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "./Navbar.css";
+import heroPortrait from "../../assets/images/hero-portrait.jpeg";
 
 const NAV_LINKS = [
   { label: "Home", href: "#hero" },
@@ -50,10 +51,11 @@ function Navbar() {
   return (
     <>
       {/* Closed navbar */}
-      <header className="navbar">
+      <header className={`navbar ${open ? "navbar--open" : ""}`}>
         <button
           className="navbar__menu-btn"
           onClick={() => setOpen(true)}
+          disabled={open}
           aria-expanded={open}
           aria-controls="site-menu"
           aria-label="Open navigation menu"
@@ -78,7 +80,7 @@ function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{
-              duration: 0.28,
+              duration: 0.22,
               ease: [0.65, 0, 0.35, 1],
             }}
             onClick={(event) => {
@@ -89,13 +91,25 @@ function Navbar() {
           >
             <motion.div
               className="menu-overlay__panel"
-              initial={{ y: -28, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
+              initial={{
+                y: -12,
+                opacity: 0,
+                scale: 0.98,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                y: -8,
+                opacity: 0,
+                scale: 0.985,
+              }}
               transition={{
-                duration: 0.42,
+                duration: 0.36,
                 ease: [0.65, 0, 0.35, 1],
-                delay: 0.04,
+                delay: 0.02,
               }}
             >
               {/* Menu header */}
@@ -149,9 +163,12 @@ function Navbar() {
 
                 {/* Replace this with your portrait later */}
                 <div className="menu-overlay__portrait" aria-hidden="true">
-                  <div className="menu-overlay__portrait-placeholder">
-                    <span>SH</span>
-                  </div>
+                  <img
+                    src={heroPortrait}
+                    alt=""
+                    className="menu-overlay__portrait-image"
+                  />
+                  <div className="menu-overlay__portrait-overlay" />
                 </div>
               </div>
             </motion.div>

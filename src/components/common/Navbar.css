@@ -1,27 +1,42 @@
 /* =========================================================
    NAVBAR
-   Cloudfolio-inspired centered menu button
    ========================================================= */
-
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+
   z-index: 100;
 
   display: flex;
   justify-content: center;
 
-  padding: 1.75rem 1rem;
+  padding: 28px 16px;
 
   pointer-events: none;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 220ms ease,
+    visibility 0ms linear 0ms;
 }
 
+.navbar--open {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
-/* ---------------------------------------------------------
+  transition:
+    opacity 160ms ease,
+    visibility 0ms linear 160ms;
+}
+
+/* =========================================================
    CLOSED MENU BUTTON
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .navbar__menu-btn {
   pointer-events: auto;
@@ -30,7 +45,7 @@
   align-items: center;
   gap: 10px;
 
-  padding: 16px 24px 16px 24px;
+  padding: 16px 24px;
 
   border: 1px solid rgba(238, 234, 226, 0.08);
   border-radius: 6px;
@@ -67,7 +82,9 @@
 }
 
 
-/* Hamburger */
+/* =========================================================
+   HAMBURGER
+   ========================================================= */
 
 .navbar__menu-icon {
   width: 17px;
@@ -90,8 +107,14 @@
 
 
 /* =========================================================
-   FULLSCREEN OVERLAY
+   MENU OVERLAY
    ========================================================= */
+
+/*
+   IMPORTANT:
+   The fullscreen layer is completely transparent.
+   The page underneath remains visible.
+*/
 
 .menu-overlay {
   position: fixed;
@@ -103,24 +126,14 @@
   align-items: flex-start;
   justify-content: center;
 
-  padding:
-    clamp(1.5rem, 4vw, 4rem)
-    clamp(1rem, 4vw, 3rem);
+  padding: 28px 16px 40px;
 
   overflow-y: auto;
 
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(48, 72, 96, 0.32),
-      transparent 45%
-    ),
-    rgba(7, 20, 34, 0.94);
+  background: transparent;
 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  pointer-events: auto;
 }
-
 
 /* =========================================================
    MENU PANEL
@@ -132,43 +145,44 @@
   display: flex;
   flex-direction: column;
 
-  gap: 0.55rem;
+  gap: 8px;
 
-  margin-top: 0.5rem;
+  margin-top: 0;
 }
 
 
-/* ---------------------------------------------------------
-   PANEL HEADER
-   --------------------------------------------------------- */
+/* =========================================================
+   MENU HEADER CARD
+   ========================================================= */
 
 .menu-overlay__header {
-  min-height: 58px;
-
+  height: 50px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 0 20px;
+  border: 1px solid rgba(238, 234, 226, 0.08);
+  border-radius: 8px;
 
-  border: 1px solid rgba(238, 234, 226, 0.06);
-  border-radius: 6px;
-
-  background: rgba(30, 48, 66, 0.92);
+  background: rgba(30, 48, 66, 0.94);
   color: var(--color-bone);
 
   font-family: var(--font-mono);
   font-size: 16px;
   font-weight: 500;
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.16);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    CLOSE BUTTON
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .menu-overlay__close {
   position: relative;
@@ -188,6 +202,7 @@
 
 .menu-overlay__close span {
   position: absolute;
+
   top: 50%;
   left: 50%;
 
@@ -213,24 +228,31 @@
 
 
 /* =========================================================
-   MENU BODY
+   MENU BODY CARD
    ========================================================= */
 
 .menu-overlay__body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  min-height: 330px;
+  min-height: 350px;
+
+  gap: 12px;
+
+  padding: 16px;
 
   overflow: hidden;
 
-  border: 1px solid rgba(238, 234, 226, 0.06);
-  border-radius: 6px;
+  border: 1px solid rgba(238, 234, 226, 0.08);
+  border-radius: 8px;
 
-  background: rgba(30, 48, 66, 0.92);
+  background: rgba(30, 48, 66, 0.94);
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.16);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 
@@ -243,16 +265,29 @@
   flex-direction: column;
   justify-content: space-between;
 
-  padding: 1.45rem 1.25rem 1.2rem;
+  min-width: 0;
+
+  padding: 28px 24px 22px;
+
+  border: 1px solid rgba(238, 234, 226, 0.08);
+  border-radius: 8px;
+
+  background: rgba(76, 91, 108, 0.96);
 
   color: var(--color-bone);
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.14);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .menu-overlay__links ul {
   display: flex;
   flex-direction: column;
 
-  gap: 0.72rem;
+  gap: 12px;
 
   margin: 0;
   padding: 0;
@@ -271,7 +306,7 @@
   color: rgba(238, 234, 226, 0.94);
 
   font-family: var(--font-display);
-  font-size: 0.98rem;
+  font-size: 16px;
   font-weight: 500;
 
   text-decoration: none;
@@ -293,24 +328,17 @@
 
 .menu-overlay__cta {
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 0.82rem 0.95rem;
-
+  padding: 13px 15px;
   border-radius: 6px;
-
   background: var(--color-bone);
   color: var(--color-ink);
-
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 12px;
   font-weight: 600;
-
   text-decoration: none;
-
   transition:
     background 180ms ease,
     color 180ms ease,
@@ -324,7 +352,7 @@
 }
 
 .menu-overlay__cta span:last-child {
-  font-size: 1.15rem;
+  font-size: 18px;
 }
 
 
@@ -334,91 +362,120 @@
 
 .menu-overlay__portrait {
   position: relative;
-
-  min-height: 330px;
-
+  min-height: 350px;
   overflow: hidden;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(10, 18, 27, 0.28),
-      transparent 45%
-    ),
-    #17283a;
+  border: 1px solid rgba(238, 234, 226, 0.08);
+  border-radius: 8px;
+  background: #050505;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 
 /*
-  Temporary placeholder.
-
-  Replace this element's background/image once
-  you provide your portrait.
+   Actual portrait
 */
 
-.menu-overlay__portrait-placeholder {
+.menu-overlay__portrait-image {
   position: absolute;
   inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(47, 95, 246, 0.28),
-      transparent 35%
-    ),
-    linear-gradient(
-      145deg,
-      #23384d,
-      #142333
-    );
-
-  color: rgba(238, 234, 226, 0.16);
-
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 7rem);
-  font-weight: 600;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center top;
+  transform: scale(1.01);
+  filter: contrast(1.03);
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms ease;
 }
 
-.menu-overlay__portrait-placeholder span {
-  transform: rotate(-8deg);
+
+/*
+   Subtle integration layer.
+   This makes the photograph merge into
+   the dark menu instead of looking pasted in.
+*/
+
+.menu-overlay__portrait-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(30, 48, 66, 0.18),
+      transparent 35%,
+      rgba(5, 8, 12, 0.08)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5, 8, 12, 0.18),
+      transparent 45%
+    );
+}
+
+
+/*
+   Small image movement when the
+   whole menu is hovered.
+*/
+
+.menu-overlay__portrait:hover
+  .menu-overlay__portrait-image {
+  transform: scale(1.035);
+  filter: contrast(1.06);
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .menu-overlay__panel {
+    width: min(100%, 620px);
+  }
+
+  .menu-overlay__body {
+    grid-template-columns: 1fr 0.9fr;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
    ========================================================= */
 
 @media (max-width: 639px) {
   .navbar {
-    padding-top: 1rem;
+    padding-top: 16px;
   }
 
   .menu-overlay {
     padding:
-      1rem
-      0.85rem;
-  }
-
-  .menu-overlay__panel {
-    margin-top: 0;
+      84px 14px 24px;
   }
 
   .menu-overlay__body {
     grid-template-columns: 1fr;
-
     min-height: auto;
   }
 
   .menu-overlay__links {
-    min-height: 380px;
+    min-height: 360px;
   }
 
   .menu-overlay__portrait {
-    min-height: 240px;
+    min-height: 280px;
+  }
+
+  .menu-overlay__portrait-image {
+    object-position: center 22%;
   }
 }
 
@@ -430,7 +487,8 @@
 @media (prefers-reduced-motion: reduce) {
   .navbar__menu-btn,
   .menu-overlay__links li a,
-  .menu-overlay__cta {
+  .menu-overlay__cta,
+  .menu-overlay__portrait-image {
     transition: none;
   }
 }

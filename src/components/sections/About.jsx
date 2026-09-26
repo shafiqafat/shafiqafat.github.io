@@ -1,56 +1,70 @@
-// ABOUT — inspiration: Auton scroll text highlight. Words dim by default and
-// light up in sequence as the paragraph scrolls through the viewport.
-// This is the ONLY section using this specific effect, per the brief.
-// The text is pinned for a dedicated scroll distance (rather than just
-// riding the paragraph's own natural height) so the reveal has room to
-// play out deliberately instead of finishing in a couple hundred pixels.
-import { useLayoutEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import './About.css';
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./About.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const BIO = "I'm a frontend engineer who spent enough time in design tools to know why a button feels wrong before I can explain it in CSS. Most of my work sits at that seam — turning a Figma file into something that holds up in a real browser, on a real connection, for a real person clicking around at 11pm. I care about the fifty milliseconds between a click and a response as much as the fifty pixels around a headline.";
+const BIO =
+  "I'm a frontend developer who enjoys turning ideas and designs into thoughtful digital experiences. I build responsive websites and web applications with React, JavaScript, Next.js, and modern CSS, while paying close attention to interaction, performance, and the details that make an interface feel right. I like working where design and development meet, turning a visual idea into something real, usable, and built to last.";
 
 function About() {
-  const scrollSpaceRef = useRef(null);
-  const pinRef = useRef(null);
+  const sectionRef = useRef(null);
   const textRef = useRef(null);
 
   useLayoutEffect(() => {
-    const words = textRef.current.querySelectorAll('.word');
+    const section = sectionRef.current;
+    const text = textRef.current;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        words,
-        { opacity: 0.2 },
-        {
-          opacity: 1,
-          stagger: 0.03,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: scrollSpaceRef.current,
-            pin: pinRef.current,
-            start: 'top top+=70', // clears the sticky navbar height
-            end: 'bottom bottom',
-            scrub: true,
+    if (!section || !text) return;
+
+    const words = gsap.utils.toArray(".word", text);
+
+    const context = gsap.context(() => {
+      gsap.set(words, {
+        opacity: 0.14,
+      });
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          end: "bottom 30%",
+          scrub: 0.4,
+        },
+      });
+
+      words.forEach((word) => {
+        timeline.to(
+          word,
+          {
+            opacity: 1,
+            duration: 1,
+            ease: "none",
           },
-        }
-      );
-    }, scrollSpaceRef);
+          "+=0.025",
+        );
+      });
+    }, section);
 
-    return () => ctx.revert();
+    return () => {
+      context.revert();
+    };
   }, []);
 
   return (
-    <section id="about" className="section about">
-      <p className="section__eyebrow">About</p>
-      <div className="about__scroll-space" ref={scrollSpaceRef}>
-        <div className="about__pin" ref={pinRef}>
+    <section id="about" className="section about" ref={sectionRef}>
+      <div className="about__top">
+        <p className="section__eyebrow">About Me</p>
+      </div>
+
+      <div className="about__scroll-space">
+        <div className="about__pin">
           <p ref={textRef} className="about__text">
-            {BIO.split(' ').map((word, i) => (
-              <span className="word" key={i}>{word}{' '}</span>
+            {BIO.split(" ").map((word, index) => (
+              <span className="word" key={`${word}-${index}`}>
+                {word}{" "}
+              </span>
             ))}
           </p>
         </div>

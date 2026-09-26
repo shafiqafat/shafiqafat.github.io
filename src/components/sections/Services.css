@@ -1,77 +1,498 @@
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.services {
+  padding-top: 120px;
+  padding-bottom: 140px;
+
+  background: var(--color-bone);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.services__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  margin-bottom: 56px;
+}
+
+.services__header .section__eyebrow {
+  margin-bottom: 14px;
+}
+
+.services__title {
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  font-size: 52px;
+  font-weight: 600;
+
+  line-height: 0.95;
+  letter-spacing: -2.5px;
+
+  color: var(--color-ink);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-3);
-  margin-top: var(--space-3);
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  gap: 12px;
 }
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
 
 .services__card {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  padding: var(--space-3);
-  background: var(--color-bone);
-  /* the base state darkens slightly on hover, immediately */
-  transition: background var(--dur-fast) var(--ease-standard),
-              border-color var(--dur-fast) var(--ease-standard),
-              transform var(--dur-base) var(--ease-standard),
-              box-shadow var(--dur-base) var(--ease-standard);
+
+  min-height: 292px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 18px 16px 16px;
+
+  border: 1px solid rgba(22, 22, 26, 0.5);
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 450ms ease;
 }
 
-.services__card:hover {
-  background: #E6E1D6;
-  border-color: var(--color-line);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 34px -24px rgba(22, 22, 26, 0.4);
-}
 
-.services__card h3,
-.services__card p,
-.services__icon {
-  position: relative;
-  z-index: 1;
-}
+/* =========================================================
+   DARK HOVER SURFACE
+   ========================================================= */
 
-.services__icon {
-  color: var(--color-ink);
-  margin-bottom: var(--space-2);
-}
+.services__card::before {
+  content: "";
 
-.services__index {
-  position: absolute;
-  top: var(--space-2);
-  right: var(--space-2);
-  font-family: var(--font-display);
-  font-size: 3.2rem;
-  color: rgba(22, 22, 26, 0.06);
-  z-index: 0;
-  line-height: 1;
-  user-select: none;
-}
-
-.services__card h3 {
-  margin-bottom: var(--space-1);
-}
-
-/* the glow: positioned at the cursor's entry point via --mx/--my,
-   fades in with a deliberate delay so it reads as a beat *after* the
-   hover, not simultaneous with it */
-.services__glow {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(
-    260px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(47, 95, 246, 0.16),
-    transparent 70%
-  );
-  transition: opacity 700ms var(--ease-standard);
-  transition-delay: 0ms;
+
+  background: #16161a;
+
+  transform: translateY(100%);
+
+  transform-origin: bottom;
+
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  z-index: 0;
 }
 
-.services__card:hover .services__glow {
+
+/* =========================================================
+   ICON LIGHT
+   ========================================================= */
+
+.services__light {
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+
+  /*
+   * 200px diameter = 100px radius.
+   *
+   * The center is positioned approximately
+   * where the icon sits.
+   */
+  top: -70px;
+  left: -70px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.17) 0%,
+      rgba(255, 255, 255, 0.10) 32%,
+      rgba(255, 255, 255, 0.045) 55%,
+      rgba(255, 255, 255, 0) 72%
+    );
+
+  opacity: 0;
+
+  transform: scale(0.15);
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  /*
+   * IMPORTANT:
+   * The light waits until the dark surface
+   * has already appeared.
+   */
+  transition:
+    opacity 420ms ease 650ms,
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1) 650ms;
+}
+
+
+/* =========================================================
+   CONTENT LAYER
+   ========================================================= */
+
+.services__title-row,
+.services__description,
+.services__tags {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.services__card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.services__card:hover::before {
+  transform: translateY(0);
+}
+
+
+/*
+ * SECONDARY EFFECT
+ *
+ * This happens after the dark card transition.
+ */
+
+.services__card:hover .services__light {
   opacity: 1;
-  transition-delay: 180ms;
+  transform: scale(1);
+}
+
+
+/* =========================================================
+   TITLE ROW
+   ========================================================= */
+
+.services__title-row {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.services__marker {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 28px;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  color: rgba(22, 22, 26, 0.78);
+
+  background:
+    rgba(22, 22, 26, 0.08);
+
+  z-index: 3;
+
+  transition:
+    color 350ms ease,
+    background-color 350ms ease,
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services__card:hover .services__marker {
+  transform: scale(1.08);
+
+  color: #16161a;
+
+  background:
+    rgba(255, 255, 255, 0.86);
+}
+
+
+/* =========================================================
+   SERVICE TITLE
+   ========================================================= */
+
+.services__card h3 {
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  font-size: 20px;
+  font-weight: 500;
+
+  line-height: 1.1;
+  letter-spacing: -0.7px;
+
+  color: rgba(22, 22, 26, 0.9);
+
+  transition:
+    color 350ms ease;
+}
+
+.services__card:hover h3 {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.services__description {
+  max-width: 270px;
+
+  margin: 18px 0 0;
+
+  font-family: var(--font-body);
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color: rgba(22, 22, 26, 0.62);
+
+  transition:
+    color 350ms ease;
+}
+
+.services__card:hover .services__description {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.services__tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: auto;
+  padding-top: 34px;
+}
+
+.services__tag {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 29px;
+
+  padding: 4px 10px;
+
+  border: 1px solid rgba(22, 22, 26, 0.5);
+
+  border-radius: 999px;
+
+  font-family: var(--font-body);
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: rgba(22, 22, 26, 0.68);
+
+  white-space: nowrap;
+
+  transition:
+    background-color 350ms ease,
+    color 350ms ease,
+    border-color 350ms ease,
+    transform 350ms ease;
+}
+
+.services__card:hover .services__tag {
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  color: #ffffff;
+
+  border-color:
+    rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================================================
+   TAG MICRO-MOTION
+   ========================================================= */
+
+.services__card:hover .services__tag:nth-child(1) {
+  transform: translateY(-2px);
+}
+
+.services__card:hover .services__tag:nth-child(2) {
+  transform: translateY(-2px);
+
+  transition-delay: 30ms;
+}
+
+.services__card:hover .services__tag:nth-child(3) {
+  transform: translateY(-2px);
+
+  transition-delay: 60ms;
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+  .services__card:hover {
+    transform: none;
+
+    box-shadow: none;
+  }
+
+  .services__card:hover::before {
+    transform: translateY(100%);
+  }
+
+  .services__card:hover .services__light {
+    opacity: 0;
+    transform: scale(0.15);
+  }
+
+  .services__card:hover .services__marker {
+    transform: none;
+  }
+
+  .services__card:hover h3 {
+    color: rgba(22, 22, 26, 0.9);
+  }
+
+  .services__card:hover .services__description {
+    color: rgba(22, 22, 26, 0.62);
+  }
+
+  .services__card:hover .services__tag {
+    background: transparent;
+    color: rgba(22, 22, 26, 0.68);
+    border-color: rgba(22, 22, 26, 0.5);
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .services__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    max-width: 760px;
+  }
+
+  .services__card {
+    min-height: 270px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .services {
+    padding-top: 90px;
+    padding-bottom: 100px;
+  }
+
+  .services__header {
+    margin-bottom: 40px;
+  }
+
+  .services__title {
+    font-size: 42px;
+    letter-spacing: -2px;
+  }
+
+  .services__grid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .services__card {
+    min-height: 250px;
+
+    padding: 24px 20px 20px;
+  }
+
+  .services__card h3 {
+    font-size: 22px;
+  }
+
+  .services__description {
+    max-width: 360px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .services__card,
+  .services__card::before,
+  .services__light,
+  .services__marker,
+  .services__tag {
+    transition: none;
+  }
 }

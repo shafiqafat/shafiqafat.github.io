@@ -1,75 +1,87 @@
-// SERVICES — inspiration: Lewius hover — the card darkens slightly, then
-// after a short delay a soft glow ramps up, radiating from the exact point
-// the cursor entered. Pointer position is tracked into CSS vars; the delay
-// itself lives in the CSS transition-delay, not in JS.
-// Polish pass: small line icon + a large faint index numeral per card, so
-// the grid reads as an editorial spec sheet rather than three plain boxes.
-import { useRef } from 'react';
-import useRevealOnScroll from '../../hooks/useRevealOnScroll';
-import './Services.css';
+import { FiCode, FiLayout, FiZap, FiGlobe } from "react-icons/fi";
+
+import "./Services.css";
 
 const SERVICES = [
   {
-    title: 'Frontend Development',
-    desc: 'React applications built for performance, not just for the first paint.',
-    icon: (
-      <path d="M8 6 3 12l5 6M16 6l5 6-5 6M13 4l-2 16" strokeLinecap="round" strokeLinejoin="round" />
-    ),
+    title: "Frontend Development",
+    description:
+      "Building responsive interfaces with React, JavaScript, and modern frontend tools.",
+    skills: ["React", "JavaScript", "Next.js", "Responsive Design", "CSS"],
+    icon: FiCode,
   },
   {
-    title: 'UI Engineering',
-    desc: 'Design files turned into components that hold up at every breakpoint.',
-    icon: (
-      <path d="M4 5h16v5H4zM4 14h7v5H4zM13 14h7v5h-7z" strokeLinecap="round" strokeLinejoin="round" />
-    ),
+    title: "UI Engineering",
+    description:
+      "Turning designs into clean, reusable interfaces that work across different screen sizes.",
+    skills: [
+      "Figma",
+      "Component Systems",
+      "UI Implementation",
+      "Accessibility",
+      "Responsive UI",
+    ],
+    icon: FiLayout,
   },
   {
-    title: 'Interaction & Motion',
-    desc: 'Scroll and hover behavior that responds to what a person is doing.',
-    icon: (
-      <path d="M4 12a8 8 0 1 1 8 8M4 12l3-3M4 12l3 3" strokeLinecap="round" strokeLinejoin="round" />
-    ),
+    title: "Interactive Web Exp.",
+    description:
+      "Creating thoughtful scroll, transition, and interaction effects that make interfaces feel alive.",
+    skills: [
+      "GSAP",
+      "ScrollTrigger",
+      "Framer Motion",
+      "Animations",
+      "Interactions",
+    ],
+    icon: FiZap,
+  },
+  {
+    title: "WordPress & CMS",
+    description:
+      "Building and customizing production-ready websites with WordPress and Elementor.",
+    skills: ["WordPress", "Elementor", "Elementor Pro", "CMS", "SEO"],
+    icon: FiGlobe,
   },
 ];
 
-function ServiceCard({ title, desc, icon, index }) {
-  const cardRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const rect = cardRef.current.getBoundingClientRect();
-    cardRef.current.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-    cardRef.current.style.setProperty('--my', `${e.clientY - rect.top}px`);
-  };
-
-  return (
-    <article
-      ref={cardRef}
-      className="services__card"
-      onMouseMove={handleMouseMove}
-    >
-      <div className="services__glow" />
-      <span className="services__index" aria-hidden="true">{String(index).padStart(2, '0')}</span>
-      <svg className="services__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-        {icon}
-      </svg>
-      <h3>{title}</h3>
-      <p>{desc}</p>
-    </article>
-  );
-}
-
 function Services() {
-  const sectionRef = useRef(null);
-  useRevealOnScroll(sectionRef);
-
   return (
-    <section id="services" className="section services" ref={sectionRef}>
-      <p className="section__eyebrow">Services</p>
-      <h2>What I do</h2>
+    <section id="services" className="section services">
+      <div className="services__header">
+        <p className="section__eyebrow">Services</p>
+
+        <h2 className="services__title">What I can do</h2>
+      </div>
+
       <div className="services__grid">
-        {SERVICES.map((service, i) => (
-          <ServiceCard key={service.title} {...service} index={i + 1} />
-        ))}
+        {SERVICES.map((service) => {
+          const Icon = service.icon;
+
+          return (
+            <article className="services__card" key={service.title}>
+              <div className="services__light" aria-hidden="true" />
+
+              <div className="services__title-row">
+                <span className="services__marker">
+                  <Icon size={17} strokeWidth={1.7} />
+                </span>
+
+                <h3>{service.title}</h3>
+              </div>
+
+              <p className="services__description">{service.description}</p>
+
+              <div className="services__tags">
+                {service.skills.map((skill) => (
+                  <span className="services__tag" key={skill}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

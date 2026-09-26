@@ -13,6 +13,7 @@ import Stats from './components/sections/Stats';
 import Testimonials from './components/sections/Testimonials';
 import Faq from './components/sections/Faq';
 import Contact from './components/sections/Contact';
+import Timeline from './components/sections/Timeline';
 
 function App() {
   useSmoothScroll();
@@ -24,11 +25,12 @@ function App() {
         <Hero />
         <About />
         <TechStack />
+        <Timeline />
         <Services />
         <Projects />
-        <Gallery />
         <Stats />
         <Testimonials />
+        <Gallery />
         <Faq />
         <Contact />
       </main>

@@ -14,9 +14,9 @@
 
 :root {
   /* Color */
-  --color-bone: #EEEAE2;       /* base background, warm paper */
+  --color-bone: #ffffff;       /* base background, warm paper */
   --color-ink: #16161A;        /* primary text / dark surfaces */
-  --color-ink-soft: #4A4A52;   /* secondary text on light */
+  --color-ink-soft: #333333;   /* secondary text on light */
   --color-paper-soft: #E3DED2; /* subtle section separation on light */
   --color-signal: #C9862C;     /* accent — amber/ochre, links, focus, highlight-on-scroll */
   --color-signal-rgb: 201, 134, 44;

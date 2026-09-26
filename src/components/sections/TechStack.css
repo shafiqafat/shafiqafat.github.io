@@ -1,206 +1,378 @@
-.skills {
-  background: var(--color-ink);
-  color: var(--color-bone);
+/* =========================================================
+   TECH STACK
+   ========================================================= */
 
-  padding-top: var(--space-7);
-  padding-bottom: var(--space-7);
+.tech-stack {
+  position: relative;
+
+  overflow: hidden;
+
+  padding-top: 140px;
+  padding-bottom: 150px;
+
+  background: var(--color-bone);
+  color: var(--color-ink);
 }
 
 
 /* =========================================================
-   HEADER
+   MAIN LAYOUT
    ========================================================= */
 
-.skills__header {
+.tech-stack__layout {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
 
-  gap: 4rem;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(320px, 0.75fr);
 
-  margin-bottom: clamp(4rem, 8vw, 7rem);
+  gap: 100px;
+
+  align-items: center;
+
+  max-width: 1240px;
+
+  margin: 0 auto;
 }
 
-.skills .section__eyebrow {
-  color: rgba(238, 234, 226, 0.5);
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.tech-stack__content {
+  min-width: 0;
+}
+
+.tech-stack__content .section__eyebrow {
+  margin-bottom: 18px;
 }
 
 
-.skills__title {
-  max-width: 850px;
+/* =========================================================
+   TITLE
+   ========================================================= */
 
-  margin: 1rem 0 0;
+.tech-stack__title {
+  max-width: 700px;
+
+  margin: 0;
 
   font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 7rem);
+
+  font-size: 76px;
   font-weight: 600;
 
-  line-height: 0.9;
-  letter-spacing: -0.055em;
+  line-height: 0.91;
 
-  color: var(--color-bone);
+  letter-spacing: -4px;
+
+  color: var(--color-ink);
 }
 
-.skills__title span {
+.tech-stack__title span {
   display: block;
 
-  color: rgba(238, 234, 226, 0.38);
+  color: rgba(22, 22, 26, 0.38);
 }
 
 
-.skills__intro {
-  max-width: 360px;
+/* =========================================================
+   TECH LABEL
+   ========================================================= */
 
-  align-self: end;
-
-  margin: 0;
-
-  color: rgba(238, 234, 226, 0.6);
+.tech-stack__label {
+  margin-top: 72px;
+  margin-bottom: 18px;
 
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.55;
-}
 
-
-/* =========================================================
-   GROUPS
-   ========================================================= */
-
-.skills__groups {
-  border-top: 1px solid rgba(238, 234, 226, 0.16);
-}
-
-
-.skills__group {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-
-  gap: 3rem;
-
-  padding: 2.5rem 0;
-
-  border-bottom: 1px solid rgba(238, 234, 226, 0.16);
-}
-
-
-/* =========================================================
-   GROUP INFORMATION
-   ========================================================= */
-
-.skills__group-top {
-  display: grid;
-  grid-template-columns: 60px 1fr;
-  column-gap: 1rem;
-  align-content: start;
-}
-
-
-.skills__number {
-  grid-column: 1;
-
-  color: rgba(238, 234, 226, 0.38);
-
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-}
-
-
-.skills__group-title {
-  grid-column: 2;
-
-  margin: 0;
-
-  color: var(--color-bone);
-
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  font-size: 16px;
   font-weight: 500;
 
-  line-height: 1;
-}
-
-
-.skills__group-description {
-  grid-column: 2;
-
-  max-width: 340px;
-
-  margin: 1rem 0 0;
-
-  color: rgba(238, 234, 226, 0.48);
-
-  font-size: 0.9rem;
-  line-height: 1.5;
+  color: var(--color-ink);
 }
 
 
 /* =========================================================
-   SKILLS
+   TOOL GRID
    ========================================================= */
 
-.skills__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.tech-stack__tools {
+  display: flex;
 
-  gap: 0.5rem;
+  flex-wrap: wrap;
 
-  align-content: start;
+  gap: 10px;
+
+  max-width: 560px;
 }
 
 
-.skill {
+/* =========================================================
+   TOOL
+   ========================================================= */
+
+.tech-stack__tool {
+  position: relative;
+
+  width: 64px;
+  height: 64px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
 
-  min-height: 58px;
 
-  padding: 0.9rem 1rem;
+/* =========================================================
+   ICON CARD
+   ========================================================= */
 
-  border: 1px solid rgba(238, 234, 226, 0.11);
-  border-radius: var(--radius-sm);
+.tech-stack__icon {
+  position: relative;
 
-  color: rgba(238, 234, 226, 0.78);
+  z-index: 2;
 
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(22, 22, 26, 0.14);
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  box-shadow:
+    0 5px 12px rgba(22, 22, 26, 0.06);
+
+  color: var(--color-ink);
 
   cursor: default;
 
   transition:
-    transform 220ms var(--ease-standard),
-    background 220ms var(--ease-standard),
-    border-color 220ms var(--ease-standard),
-    color 220ms var(--ease-standard);
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease;
 }
 
 
-.skill__arrow {
-  color: rgba(238, 234, 226, 0.25);
+/* actual logo */
 
-  transform: translate(-3px, 3px);
-
-  transition:
-    transform 220ms var(--ease-standard),
-    color 220ms var(--ease-standard);
+.tech-stack__icon svg {
+  width: 25px;
+  height: 25px;
 }
 
 
-.skill:hover {
-  transform: translateY(-3px);
+/* =========================================================
+   ICON HOVER
+   ========================================================= */
 
-  background: rgba(238, 234, 226, 0.055);
+.tech-stack__tool:hover .tech-stack__icon,
+.tech-stack__icon:focus-visible {
+  transform: translateY(-5px);
 
-  border-color: rgba(47, 95, 246, 0.55);
+  background: var(--color-ink);
+
+  border-color: var(--color-ink);
 
   color: var(--color-bone);
+
+  box-shadow:
+    0 14px 25px rgba(22, 22, 26, 0.16);
+
+  outline: none;
 }
 
 
-.skill:hover .skill__arrow {
-  color: var(--color-signal);
+/* =========================================================
+   TOOLTIP
+   ========================================================= */
 
-  transform: translate(0, 0);
+.tech-stack__tooltip {
+  position: absolute;
+
+  left: 50%;
+  bottom: calc(100% + 10px);
+
+  z-index: 10;
+
+  transform:
+    translate(-50%, 6px)
+    scale(0.96);
+
+  padding: 7px 10px;
+
+  border-radius: 6px;
+
+  background: var(--color-ink);
+
+  color: var(--color-bone);
+
+  font-family: var(--font-body);
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transition:
+    opacity 160ms ease,
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.tech-stack__tooltip::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -4px;
+
+  width: 8px;
+  height: 8px;
+
+  background: var(--color-ink);
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+}
+
+
+.tech-stack__tool:hover .tech-stack__tooltip,
+.tech-stack__icon:focus-visible + .tech-stack__tooltip {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0)
+    scale(1);
+}
+
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.tech-stack__services {
+  align-self: center;
+
+  min-width: 0;
+}
+
+
+.tech-stack__services-label {
+  margin-bottom: 34px;
+
+  font-family: var(--font-body);
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: var(--color-ink);
+}
+
+
+/* =========================================================
+   SERVICE LIST
+   ========================================================= */
+
+.tech-stack__service-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 26px;
+}
+
+
+.tech-stack__service {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  width: fit-content;
+}
+
+
+/* =========================================================
+   SERVICE ICON
+   ========================================================= */
+
+.tech-stack__service-icon {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--color-ink);
+
+  color: var(--color-bone);
+
+  box-shadow:
+    0 10px 20px rgba(22, 22, 26, 0.16);
+
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms ease;
+}
+
+
+.tech-stack__service-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+
+/* =========================================================
+   SERVICE HOVER
+   ========================================================= */
+
+.tech-stack__service:hover .tech-stack__service-icon {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 14px 26px rgba(22, 22, 26, 0.22);
+}
+
+
+/* =========================================================
+   SERVICE NAME
+   ========================================================= */
+
+.tech-stack__service-name {
+  font-family: var(--font-display);
+
+  font-size: 20px;
+  font-weight: 500;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.5px;
+
+  color: var(--color-ink);
 }
 
 
@@ -208,21 +380,24 @@
    TABLET
    ========================================================= */
 
-@media (max-width: 800px) {
-  .skills__header {
-    grid-template-columns: 1fr;
-
-    gap: 2rem;
+@media (max-width: 1000px) {
+  .tech-stack {
+    padding-top: 110px;
+    padding-bottom: 120px;
   }
 
-  .skills__intro {
-    align-self: start;
-  }
-
-  .skills__group {
+  .tech-stack__layout {
     grid-template-columns: 1fr;
 
-    gap: 2rem;
+    gap: 70px;
+  }
+
+  .tech-stack__title {
+    font-size: 68px;
+  }
+
+  .tech-stack__services {
+    max-width: 560px;
   }
 }
 
@@ -232,25 +407,57 @@
    ========================================================= */
 
 @media (max-width: 600px) {
-  .skills {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+  .tech-stack {
+    padding-top: 90px;
+    padding-bottom: 100px;
   }
 
-  .skills__title {
-    font-size: clamp(3rem, 15vw, 5rem);
+  .tech-stack__layout {
+    gap: 55px;
   }
 
-  .skills__group {
-    padding: 2rem 0;
+  .tech-stack__title {
+    font-size: 48px;
+
+    line-height: 0.94;
+
+    letter-spacing: -2.5px;
   }
 
-  .skills__list {
-    grid-template-columns: 1fr;
+  .tech-stack__label {
+    margin-top: 52px;
   }
 
-  .skill {
-    min-height: 54px;
+  .tech-stack__tools {
+    gap: 8px;
+    
+  }
+
+  .tech-stack__tool {
+    width: 58px;
+    height: 58px;
+  }
+
+  .tech-stack__icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tech-stack__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .tech-stack__services-label {
+    margin-bottom: 26px;
+  }
+
+  .tech-stack__service-list {
+    gap: 20px;
+  }
+
+  .tech-stack__service-name {
+    font-size: 18px;
   }
 }
 
@@ -260,7 +467,9 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .skill {
+  .tech-stack__icon,
+  .tech-stack__tooltip,
+  .tech-stack__service-icon {
     transition: none;
   }
 }

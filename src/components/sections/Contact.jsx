@@ -7,7 +7,7 @@ import useRevealOnScroll from '../../hooks/useRevealOnScroll';
 import './Contact.css';
 
 const FACTS = [
-  { label: 'Location', value: 'Sylhet, Bangladesh' },
+  { label: 'Location', value: 'Dhaka, Bangladesh' },
   { label: 'Timezone', value: 'GMT+6' },
   { label: 'Response time', value: 'Within 24 hours' },
 ];

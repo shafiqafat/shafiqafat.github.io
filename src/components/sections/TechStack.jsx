@@ -1,127 +1,237 @@
 import { motion } from "framer-motion";
+
+import {
+  SiHtml5,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  // SiNodedotjs,
+  SiSupabase,
+  SiGit,
+  SiGithub,
+  SiVite,
+  SiFigma,
+  SiWordpress,
+  SiElementor,
+} from "react-icons/si";
+
+import { FaCss3Alt } from "react-icons/fa";
+import { VscVscode } from "react-icons/vsc";
+
+import {
+  FiMonitor,
+  FiLayout,
+  FiLayers,
+  FiCode,
+  FiZap,
+  FiDatabase,
+  FiSmartphone,
+} from "react-icons/fi";
+
 import "./TechStack.css";
 
-const SKILL_GROUPS = [
+const TECH_STACK = [
   {
-    number: "01",
-    title: "Frontend",
-    description:
-      "Building responsive interfaces and interactive web experiences.",
-    skills: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+    name: "HTML5",
+    icon: SiHtml5,
   },
   {
-    number: "02",
-    title: "Backend & Data",
-    description:
-      "Connecting interfaces to APIs, services, and application data.",
-    skills: [
-      "Node.js",
-      "Supabase",
-      "REST APIs",
-      "Authentication",
-      "Database Design",
-    ],
+    name: "CSS3",
+    icon: FaCss3Alt,
   },
   {
-    number: "03",
-    title: "Tools & Workflow",
-    description: "The tools I use to design, build, test, and ship projects.",
-    skills: ["Git", "GitHub", "VS Code", "Vite", "Figma", "Adobe XD"],
+    name: "JavaScript",
+    icon: SiJavascript,
   },
   {
-    number: "04",
-    title: "CMS & Platforms",
-    description:
-      "Building and customizing production-ready websites and platforms.",
-    skills: ["WordPress", "Elementor", "Hostinger", "Responsive Design"],
+    name: "React",
+    icon: SiReact,
+  },
+  {
+    name: "Next.js",
+    icon: SiNextdotjs,
+  },
+  {
+    name: "Tailwind CSS",
+    icon: SiTailwindcss,
+  },
+  // {
+  //   name: "Node.js",
+  //   icon: SiNodedotjs,
+  // },
+  {
+    name: "Supabase",
+    icon: SiSupabase,
+  },
+  {
+    name: "Git",
+    icon: SiGit,
+  },
+  {
+    name: "GitHub",
+    icon: SiGithub,
+  },
+  {
+    name: "VS Code",
+    icon: VscVscode,
+  },
+  {
+    name: "Vite",
+    icon: SiVite,
+  },
+  {
+    name: "Figma",
+    icon: SiFigma,
+  },
+  {
+    name: "WordPress",
+    icon: SiWordpress,
+  },
+  {
+    name: "Elementor",
+    icon: SiElementor,
   },
 ];
 
-function Skills() {
+const SERVICES = [
+  {
+    name: "Frontend Development",
+    icon: FiCode,
+  },
+  {
+    name: "Web Design",
+    icon: FiLayout,
+  },
+  {
+    name: "Responsive Websites",
+    icon: FiSmartphone,
+  },
+  {
+    name: "Web Applications",
+    icon: FiMonitor,
+  },
+  {
+    name: "Interactive Experiences",
+    icon: FiZap,
+  },
+  {
+    name: "CMS Development",
+    icon: FiLayers,
+  },
+  {
+    name: "Supabase Integration",
+    icon: FiDatabase,
+  },
+];
+
+function TechIcon({ tool, index }) {
+  const Icon = tool.icon;
+
   return (
-    <section id="skills" className="section skills">
-      <div className="skills__header">
-        <div>
+    <motion.div
+      className="tech-stack__tool"
+      initial={{
+        opacity: 0,
+        y: 16,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: 0.4,
+        delay: index * 0.025,
+        ease: [0.65, 0, 0.35, 1],
+      }}
+    >
+      <div className="tech-stack__icon" tabIndex="0" aria-label={tool.name}>
+        <Icon aria-hidden="true" />
+      </div>
+
+      <span className="tech-stack__tooltip">{tool.name}</span>
+    </motion.div>
+  );
+}
+
+function ServiceItem({ service, index }) {
+  const Icon = service.icon;
+
+  return (
+    <motion.div
+      className="tech-stack__service"
+      initial={{
+        opacity: 0,
+        x: 20,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.3,
+      }}
+      transition={{
+        duration: 0.45,
+        delay: index * 0.06,
+        ease: [0.65, 0, 0.35, 1],
+      }}
+    >
+      <span className="tech-stack__service-icon">
+        <Icon aria-hidden="true" />
+      </span>
+
+      <span className="tech-stack__service-name">{service.name}</span>
+    </motion.div>
+  );
+}
+
+function TechStack() {
+  return (
+    <section id="skills" className="section tech-stack">
+      <div className="tech-stack__layout">
+        {/* =================================================
+            LEFT — TECH STACK
+            ================================================= */}
+
+        <div className="tech-stack__content">
           <p className="section__eyebrow">Tech Stack</p>
 
-          <h2 className="skills__title">
+          <h2 className="tech-stack__title">
             Tools I use to
             <span>build things.</span>
           </h2>
+
+          <div className="tech-stack__label">My tech stack</div>
+
+          <div className="tech-stack__tools">
+            {TECH_STACK.map((tool, index) => (
+              <TechIcon key={tool.name} tool={tool} index={index} />
+            ))}
+          </div>
         </div>
 
-        <p className="skills__intro">
-          A practical stack focused on building interfaces, connecting products
-          to data, and shipping responsive experiences.
-        </p>
-      </div>
+        {/* =================================================
+            RIGHT — SERVICES
+            ================================================= */}
 
-      <div className="skills__groups">
-        {SKILL_GROUPS.map((group, groupIndex) => (
-          <motion.article
-            key={group.number}
-            className="skills__group"
-            initial={{
-              opacity: 0,
-              y: 35,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: groupIndex * 0.08,
-              ease: [0.65, 0, 0.35, 1],
-            }}
-          >
-            <div className="skills__group-top">
-              <span className="skills__number">{group.number}</span>
+        <div className="tech-stack__services">
+          <div className="tech-stack__services-label">What I can build</div>
 
-              <h3 className="skills__group-title">{group.title}</h3>
-
-              <p className="skills__group-description">{group.description}</p>
-            </div>
-
-            <div className="skills__list">
-              {group.skills.map((skill, index) => (
-                <motion.div
-                  key={skill}
-                  className="skill"
-                  initial={{
-                    opacity: 0,
-                    y: 12,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.5,
-                  }}
-                  transition={{
-                    duration: 0.35,
-                    delay: groupIndex * 0.08 + index * 0.035,
-                  }}
-                >
-                  <span>{skill}</span>
-
-                  <span className="skill__arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.article>
-        ))}
+          <div className="tech-stack__service-list">
+            {SERVICES.map((service, index) => (
+              <ServiceItem key={service.name} service={service} index={index} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-export default Skills;
+export default TechStack;
