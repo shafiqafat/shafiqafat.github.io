@@ -10,24 +10,80 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--color-bone);
-  transition: border-color var(--dur-fast) var(--ease-standard);
+  transition: border-color var(--dur-fast) var(--ease-standard),
+              transform var(--dur-base) var(--ease-standard),
+              box-shadow var(--dur-base) var(--ease-standard);
 }
 
 .projects__card:hover {
   border-color: var(--color-signal);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 44px -26px rgba(22, 22, 26, 0.4);
+}
+
+.projects__badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.35em 0.8em;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.projects__badge--case-study {
+  background: rgba(47, 95, 246, 0.85);
+  color: var(--color-bone);
+}
+
+.projects__badge--showcase {
+  background: rgba(238, 234, 226, 0.85);
+  color: var(--color-ink);
+}
+
+.projects__card-heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.projects__index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
 }
 
 .projects__card-media {
+  position: relative;
   aspect-ratio: 16 / 9;
-  background: repeating-linear-gradient(135deg, var(--color-paper-soft) 0 14px, #DAD3C4 14px 28px);
+  overflow: hidden;
+}
+
+.projects__card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* the rounded reveal: image B is clipped to a circle at the cursor's
+   entry point, radius 0 by default, expanding to fully cover on hover */
+.projects__card-media-reveal {
+  clip-path: circle(0% at var(--mx, 50%) var(--my, 50%));
+  transition: clip-path 550ms var(--ease-standard);
+}
+
+.projects__card-media:hover .projects__card-media-reveal {
+  clip-path: circle(75% at var(--mx, 50%) var(--my, 50%));
 }
 
 .projects__card-body {
   padding: var(--space-3);
-}
-
-.projects__card-body h3 {
-  margin-bottom: var(--space-1);
 }
 
 .projects__card-blurb {

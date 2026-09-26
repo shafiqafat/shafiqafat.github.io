@@ -26,32 +26,3 @@
   max-width: 60ch;
 }
 
-
-/* Testimonials */
-.testimonials__stack-placeholder {
-  display: grid;
-  gap: var(--space-3);
-  margin-top: var(--space-3);
-}
-
-.testimonials__stack-placeholder blockquote {
-  margin: 0;
-  border-left: 2px solid var(--color-signal);
-  padding-left: var(--space-3);
-}
-
-.testimonials__stack-placeholder cite {
-  display: block;
-  margin-top: var(--space-1);
-  font-style: normal;
-  font-size: var(--fs-small);
-  color: var(--color-ink-soft);
-}
-
-/* Contact */
-.contact__cta {
-  display: inline-block;
-  margin-top: var(--space-3);
-  font-family: var(--font-mono);
-  color: var(--color-signal);
-}

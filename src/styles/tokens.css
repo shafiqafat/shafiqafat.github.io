@@ -1,10 +1,15 @@
 /*
-  DESIGN TOKENS — placeholder pass
+  DESIGN TOKENS
   ---------------------------------
   Direction: "engineered warmth" — a frontend engineer's portfolio should feel
-  precise and technical, not decorative. Bone/ink base with a single cobalt
-  signal color (code-editor blue, not a generic SaaS purple/terracotta).
-  Revisit during the full visual design pass — these are working values.
+  precise and technical, not decorative. Bone/ink base with a single warm
+  accent, rather than a generic SaaS blue/purple that fights the paper tone.
+
+  --color-signal-rgb holds the same color as --color-signal, as bare R,G,B
+  components, so any rgba() usage elsewhere can write
+  rgba(var(--color-signal-rgb), 0.2) instead of a second hardcoded literal.
+  If the accent ever changes again, update these two lines together and
+  every opacity variant across the site stays in sync automatically.
 */
 
 :root {
@@ -13,8 +18,9 @@
   --color-ink: #16161A;        /* primary text / dark surfaces */
   --color-ink-soft: #4A4A52;   /* secondary text on light */
   --color-paper-soft: #E3DED2; /* subtle section separation on light */
-  --color-signal: #2F5FF6;     /* accent — links, focus, highlight-on-scroll */
-  --color-signal-dim: #C9D6FF; /* tint of signal for backgrounds */
+  --color-signal: #C9862C;     /* accent — amber/ochre, links, focus, highlight-on-scroll */
+  --color-signal-rgb: 201, 134, 44;
+  --color-signal-dim: #F1E0C3; /* pale tint of signal, for backgrounds */
   --color-line: #D8D2C4;       /* hairline borders/dividers */
 
   /* Type */

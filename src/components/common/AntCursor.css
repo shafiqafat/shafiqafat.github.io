@@ -1,8 +1,0 @@
-.ant-cursor {
-  position: fixed;
-  bottom: var(--space-3);
-  right: var(--space-3);
-  font-size: 1.25rem;
-  z-index: 200;
-  pointer-events: none; /* becomes interactive once repulsion logic is added */
-}

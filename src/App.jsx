@@ -1,7 +1,8 @@
 import './App.css';
+import useSmoothScroll from './hooks/useSmoothScroll';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
-import AntCursor from './components/common/AntCursor';
+import CursorCreature from './components/common/CursorCreature';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import TechStack from './components/sections/TechStack';
@@ -10,9 +11,12 @@ import Projects from './components/sections/Projects';
 import Gallery from './components/sections/Gallery';
 import Stats from './components/sections/Stats';
 import Testimonials from './components/sections/Testimonials';
+import Faq from './components/sections/Faq';
 import Contact from './components/sections/Contact';
 
 function App() {
+  useSmoothScroll();
+
   return (
     <>
       <Navbar />
@@ -25,10 +29,11 @@ function App() {
         <Gallery />
         <Stats />
         <Testimonials />
+        <Faq />
         <Contact />
       </main>
       <Footer />
-      <AntCursor />
+      <CursorCreature />
     </>
   );
 }

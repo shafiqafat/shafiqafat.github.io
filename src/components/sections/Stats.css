@@ -3,6 +3,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-2);
   margin-top: var(--space-3);
+  perspective: 900px;
 }
 
 .stats__card {
@@ -10,15 +11,24 @@
   border-radius: var(--radius-md);
   padding: var(--space-3);
   background: var(--color-bone);
-  transition: transform var(--dur-base) var(--ease-standard),
+  --rx: 0deg;
+  --ry: 0deg;
+  --lift: 0px;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--lift));
+  transition: transform 260ms var(--ease-standard),
               box-shadow var(--dur-base) var(--ease-standard),
               border-color var(--dur-base) var(--ease-standard);
 }
 
 .stats__card:hover {
-  transform: translateY(-6px);
+  --lift: -6px;
   border-color: var(--color-ink);
   box-shadow: 0 18px 34px -22px rgba(22, 22, 26, 0.45);
+}
+
+.stats__icon {
+  color: var(--color-ink-soft);
+  margin-bottom: var(--space-2);
 }
 
 .stats__card strong {

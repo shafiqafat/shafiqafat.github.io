@@ -3,6 +3,9 @@
 //   grid position as the section scrolls into view (GSAP + ScrollTrigger).
 // - Monod: one featured project sits larger/first, the rest sit in a
 //   regular grid beneath it.
+// - Bureau Nine (preferred over Rumaya's version of the same effect): each
+//   card's media holds two images; hovering reveals the second through a
+//   circular, rounded wipe that expands from wherever the cursor entered.
 // - Each card is either a quick showcase or a deeper case study
 //   (problem / stack / role / outcome), set per project.
 import { useLayoutEffect, useRef } from 'react';
@@ -21,11 +24,15 @@ const PROJECTS = [
     stack: 'React, GSAP, Node',
     role: 'Frontend engineering, UI design',
     outcome: 'Placeholder outcome metric or result.',
+    imageA: 'https://picsum.photos/id/1005/900/500',
+    imageB: 'https://picsum.photos/id/1011/900/500',
   },
   {
     name: 'Project Two',
     type: 'showcase',
     blurb: 'Quick visual showcase — screenshots and a link.',
+    imageA: 'https://picsum.photos/id/1016/700/500',
+    imageB: 'https://picsum.photos/id/1018/700/500',
   },
   {
     name: 'Project Three',
@@ -34,13 +41,41 @@ const PROJECTS = [
     stack: 'React, TypeScript',
     role: 'Frontend engineering',
     outcome: 'Placeholder outcome metric or result.',
+    imageA: 'https://picsum.photos/id/1020/700/500',
+    imageB: 'https://picsum.photos/id/1024/700/500',
   },
   {
     name: 'Project Four',
     type: 'showcase',
     blurb: 'Quick visual showcase — screenshots and a link.',
+    imageA: 'https://picsum.photos/id/1031/700/500',
+    imageB: 'https://picsum.photos/id/1039/700/500',
   },
 ];
+
+// the rounded circular reveal: image B sits under a clip-path circle
+// pinned to the cursor's entry point, radius 0 → expands to cover on
+// hover, shrinks back on leave. "Rounded" here means literally circular,
+// not just rounded corners.
+function ProjectMedia({ imageA, imageB, alt, type }) {
+  const mediaRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const rect = mediaRef.current.getBoundingClientRect();
+    mediaRef.current.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
+    mediaRef.current.style.setProperty('--my', `${((e.clientY - rect.top) / rect.height) * 100}%`);
+  };
+
+  return (
+    <div className="projects__card-media" ref={mediaRef} onMouseMove={handleMouseMove}>
+      <span className={`projects__badge projects__badge--${type}`}>
+        {type === 'case-study' ? 'Case study' : 'Showcase'}
+      </span>
+      <img src={imageA} alt={alt} loading="lazy" />
+      <img src={imageB} alt="" aria-hidden="true" className="projects__card-media-reveal" loading="lazy" />
+    </div>
+  );
+}
 
 function Projects() {
   const gridRef = useRef(null);
@@ -103,15 +138,18 @@ function Projects() {
       <h2>Selected projects</h2>
 
       <div className="projects__grid" ref={gridRef}>
-        {PROJECTS.map((project) => (
+        {PROJECTS.map((project, i) => (
           <article
             key={project.name}
             ref={addCardRef}
             className={`projects__card${project.featured ? ' projects__card--featured' : ''}`}
           >
-            <div className="projects__card-media" aria-hidden="true" />
+            <ProjectMedia imageA={project.imageA} imageB={project.imageB} alt={project.name} type={project.type} />
             <div className="projects__card-body">
-              <h3>{project.name}</h3>
+              <div className="projects__card-heading">
+                <span className="projects__index">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{project.name}</h3>
+              </div>
               <p className="projects__card-blurb">{project.blurb}</p>
 
               {project.type === 'case-study' ? (

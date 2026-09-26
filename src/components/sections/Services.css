@@ -14,18 +14,40 @@
   background: var(--color-bone);
   /* the base state darkens slightly on hover, immediately */
   transition: background var(--dur-fast) var(--ease-standard),
-              border-color var(--dur-fast) var(--ease-standard);
+              border-color var(--dur-fast) var(--ease-standard),
+              transform var(--dur-base) var(--ease-standard),
+              box-shadow var(--dur-base) var(--ease-standard);
 }
 
 .services__card:hover {
   background: #E6E1D6;
   border-color: var(--color-line);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 34px -24px rgba(22, 22, 26, 0.4);
 }
 
 .services__card h3,
-.services__card p {
+.services__card p,
+.services__icon {
   position: relative;
   z-index: 1;
+}
+
+.services__icon {
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+}
+
+.services__index {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  color: rgba(22, 22, 26, 0.06);
+  z-index: 0;
+  line-height: 1;
+  user-select: none;
 }
 
 .services__card h3 {

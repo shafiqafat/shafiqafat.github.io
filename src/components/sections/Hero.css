@@ -1,217 +1,50 @@
 .hero {
-  position: relative;
-
-  min-height: 100svh;
-
-  display: flex;
-  align-items: center;
-
-  padding:
-    8rem
-    var(--content-pad)
-    5rem;
-
-  overflow: hidden;
-
-  background: var(--color-bone);
-}
-
-
-/* =========================================================
-   CONTENT
-   ========================================================= */
-
-.hero__content {
-  width: 100%;
-  max-width: var(--content-max);
-
-  margin: 0 auto;
-
+  min-height: calc(100vh - 61px); /* viewport minus sticky navbar */
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  text-align: center;
+  justify-content: center;
+  position: relative;
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
 }
 
+.hero__inner {
+  max-width: 40rem;
+}
 
-/* =========================================================
-   EYEBROW
-   ========================================================= */
-
-.hero__eyebrow {
-  margin: 0 0 1.25rem;
-
+.hero__role {
   font-family: var(--font-mono);
   font-size: var(--fs-small);
-  font-weight: 500;
-
   color: var(--color-ink-soft);
-
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
 }
 
-
-/* =========================================================
-   TITLE
-   ========================================================= */
-
-.hero__title {
-  max-width: 1100px;
-
-  margin: 0;
-
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 9.5rem);
-  font-weight: 600;
-
-  line-height: 0.88;
-  letter-spacing: -0.065em;
-
-  color: var(--color-ink);
-}
-
-.hero__title span {
-  display: block;
-}
-
-
-/* =========================================================
-   HERO VISUAL
-   ========================================================= */
-
-.hero__visual-wrap {
-  position: relative;
-
-  z-index: 2;
-
-  width: clamp(220px, 30vw, 390px);
-
-  margin-top: clamp(2.5rem, 5vw, 4.5rem);
-
-  perspective: 1200px;
-}
-
-.hero__visual {
-  position: relative;
-
-  width: 100%;
-
-  aspect-ratio: 4 / 3;
-
-  overflow: hidden;
-
-  border-radius: 32px;
-
-  background: var(--color-paper-soft);
-
-  transform-origin: center center;
-
-  will-change: transform, border-radius;
-}
-
-
-/* Temporary visual */
-
-.hero__visual-placeholder {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(47, 95, 246, 0.2),
-      transparent 32%
-    ),
-    linear-gradient(
-      145deg,
-      #d8d2c4,
-      #b9b1a1
-    );
-
-  color: rgba(22, 22, 26, 0.14);
-
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 12vw, 9rem);
-  font-weight: 600;
-
-  user-select: none;
-}
-
-.hero__visual-placeholder span {
-  transform: rotate(-7deg);
-}
-
-
-/* =========================================================
-   LOWER CONTENT
-   ========================================================= */
-
-.hero__bottom {
-  width: 100%;
-  max-width: 850px;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 3rem;
-
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-
-  text-align: left;
+.hero h1 {
+  letter-spacing: -0.02em;
 }
 
 .hero__intro {
-  max-width: 470px;
-
-  margin: 0;
-
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
-  line-height: 1.55;
-
+  margin-top: var(--space-3);
+  font-size: 1.125rem;
   color: var(--color-ink-soft);
 }
 
-
-/* =========================================================
-   ACTIONS
-   ========================================================= */
-
 .hero__actions {
   display: flex;
-  flex-shrink: 0;
-  gap: 0.6rem;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
 .hero__cta-primary,
 .hero__cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-
-  min-width: 150px;
-
-  padding: 0.85rem 1rem;
-
+  padding: 0.85em 1.6em;
   border-radius: var(--radius-sm);
-
-  font-family: var(--font-mono);
   font-size: var(--fs-small);
-
-  text-decoration: none;
-
-  transition:
-    background 200ms var(--ease-standard),
-    color 200ms var(--ease-standard),
-    border-color 200ms var(--ease-standard),
-    transform 200ms var(--ease-standard);
+  font-family: var(--font-mono);
+  transition: background var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard);
 }
 
 .hero__cta-primary {
@@ -221,147 +54,35 @@
 
 .hero__cta-primary:hover {
   background: var(--color-signal);
-  transform: translateY(-2px);
 }
 
 .hero__cta-secondary {
   border: 1px solid var(--color-line);
-  color: var(--color-ink);
 }
 
 .hero__cta-secondary:hover {
-  border-color: var(--color-ink);
-  transform: translateY(-2px);
+  border-color: var(--color-signal);
+  color: var(--color-signal);
 }
-
-
-/* =========================================================
-   SCROLL CUE
-   ========================================================= */
 
 .hero__scroll-cue {
   position: absolute;
-
+  bottom: var(--space-4);
   left: var(--content-pad);
-  bottom: 2rem;
-
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-
+  gap: var(--space-1);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-
+  font-size: var(--fs-small);
   color: var(--color-ink-soft);
-
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .hero__scroll-line {
-  width: 34px;
+  width: 28px;
   height: 1px;
-
   background: var(--color-ink-soft);
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 800px) {
-  .hero {
-    padding-top: 7rem;
-  }
-
-  .hero__title {
-    font-size: clamp(3.5rem, 12vw, 6rem);
-  }
-
-  .hero__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-
-    max-width: 600px;
-  }
-
-  .hero__actions {
-    width: 100%;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
 @media (max-width: 640px) {
-  .hero {
-    min-height: 100svh;
-
-    padding:
-      7rem
-      var(--content-pad)
-      4rem;
-  }
-
-  .hero__eyebrow {
-    margin-bottom: 1rem;
-  }
-
-  .hero__title {
-    font-size: clamp(3rem, 16vw, 5rem);
-    line-height: 0.9;
-  }
-
-  .hero__visual-wrap {
-    width: min(78vw, 320px);
-
-    margin-top: 2.5rem;
-  }
-
-  .hero__visual {
-    border-radius: 24px;
-  }
-
-  .hero__bottom {
-    margin-top: 2.5rem;
-    gap: 2rem;
-  }
-
-  .hero__intro {
-    font-size: 1rem;
-  }
-
-  .hero__actions {
-    flex-direction: column;
-
-    width: 100%;
-  }
-
-  .hero__cta-primary,
-  .hero__cta-secondary {
-    width: 100%;
-  }
-
-  .hero__scroll-cue {
-    display: none;
-  }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__visual {
-    will-change: auto;
-  }
-
-  .hero__cta-primary,
-  .hero__cta-secondary {
-    transition: none;
-  }
+  .hero__scroll-cue { display: none; }
 }

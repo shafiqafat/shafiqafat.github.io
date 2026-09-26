@@ -1,0 +1,41 @@
+.cursor-creature {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  pointer-events: none;
+  color: var(--color-signal);
+  filter: drop-shadow(0 2px 3px rgba(22, 22, 26, 0.25));
+  will-change: transform;
+  --walk-speed: 0.7s;
+}
+
+.cursor-creature svg {
+  display: block;
+  transform: translate(-50%, -50%);
+}
+
+/* each leg rotates a few degrees around its own hip point; alternating
+   legs are offset by half a cycle so it reads as an actual walk, not
+   everything swinging in unison */
+.cursor-creature__leg {
+  animation: leg-step var(--walk-speed, 0.7s) ease-in-out infinite;
+}
+
+@keyframes leg-step {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+
+/* ant fallback: whole leg cluster gets a subtler shared wiggle */
+.cursor-creature--ant .cursor-creature__leg-group {
+  transform-origin: 13px 8px;
+  animation: leg-step var(--walk-speed, 0.7s) ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-creature__leg,
+  .cursor-creature--ant .cursor-creature__leg-group {
+    animation: none;
+  }
+}
