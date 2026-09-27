@@ -33,7 +33,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer__top">
-        <a href="#hero" className="footer__logo">Shafiqur</a>
+        <a href="#hero" className="footer__logo">Shafique</a>
         <a href="#hero" className="footer__back-to-top">Back to top ↑</a>
       </div>
 

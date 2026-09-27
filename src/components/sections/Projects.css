@@ -1,144 +1,490 @@
-.projects__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-  margin-top: var(--space-4);
-}
+/* =========================================
+   PROJECTS / FEATURED WORK
+   Straight vertical scrolling composition
+   All sizing uses px.
+   ========================================= */
 
-.projects__card {
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+.projects {
+  position: relative;
+  width: 100%;
   background: var(--color-bone);
-  transition: border-color var(--dur-fast) var(--ease-standard),
-              transform var(--dur-base) var(--ease-standard),
-              box-shadow var(--dur-base) var(--ease-standard);
-}
-
-.projects__card:hover {
-  border-color: var(--color-signal);
-  transform: translateY(-6px);
-  box-shadow: 0 24px 44px -26px rgba(22, 22, 26, 0.4);
-}
-
-.projects__badge {
-  position: absolute;
-  top: var(--space-2);
-  left: var(--space-2);
-  z-index: 2;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 0.35em 0.8em;
-  border-radius: 999px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.projects__badge--case-study {
-  background: rgba(47, 95, 246, 0.85);
-  color: var(--color-bone);
-}
-
-.projects__badge--showcase {
-  background: rgba(238, 234, 226, 0.85);
   color: var(--color-ink);
+  overflow: hidden;
 }
 
-.projects__card-heading {
+
+/* =========================================
+   PINNED STAGE
+   ========================================= */
+
+.projects__stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   CENTER HEADING
+   ========================================= */
+
+.projects__heading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  margin-bottom: var(--space-1);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
 }
 
-.projects__index {
+
+/* =========================================
+   EYEBROW
+   ========================================= */
+
+.projects__eyebrow {
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: var(--fs-small);
+  font-size: 12px;
+  line-height: 1;
   color: var(--color-ink-soft);
 }
 
-.projects__card-media {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+
+/* =========================================
+   MAIN TITLE
+   ========================================= */
+
+.projects__heading h2 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(92px, 11vw, 190px);
+  font-weight: 500;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  white-space: nowrap;
 }
 
-.projects__card-media img {
+
+/* =========================================
+   SCROLL LABEL
+   ========================================= */
+
+.projects__scroll {
+  margin: 58px 0 0;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-ink-soft);
+}
+
+
+/* =========================================
+   CARD LAYER
+   ========================================= */
+
+.projects__cards {
   position: absolute;
   inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   PROJECT ITEM
+   ========================================= */
+
+.projects__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(505px, 32vw);
+  /*
+   * IMPORTANT
+   *
+   * The card stays horizontally centered.
+   *
+   * GSAP ONLY changes Y.
+   */
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  /*
+   * Prevent the browser from trying
+   * to optimize multiple transform axes.
+   */
+  will-change: transform;
+}
+
+
+/* =========================================
+   PROJECT LINK
+   ========================================= */
+
+.projects__project {
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================
+   PROJECT MEDIA
+   ========================================= */
+
+.projects__project-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.15 / 1;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #d8d8d8;
+  isolation: isolate;
+}
+
+
+/* =========================================
+   IMAGE
+   ========================================= */
+
+.projects__project-media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1);
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* the rounded reveal: image B is clipped to a circle at the cursor's
-   entry point, radius 0 by default, expanding to fully cover on hover */
-.projects__card-media-reveal {
-  clip-path: circle(0% at var(--mx, 50%) var(--my, 50%));
-  transition: clip-path 550ms var(--ease-standard);
+
+/* =========================================
+   HOVER OVERLAY
+   ========================================= */
+
+.projects__project-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /*
+   * TOP
+   * 
+   * Project information sits at the top.
+   *
+   * BOTTOM
+   *
+   * Case study button sits at the bottom.
+   */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 28px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.25) 45%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+
+  color: #fff;
+  /*
+   * Completely invisible until hover.
+   */
+  opacity: 0;
+  transition:
+    opacity 300ms ease;
+  pointer-events: none;
 }
 
-.projects__card-media:hover .projects__card-media-reveal {
-  clip-path: circle(75% at var(--mx, 50%) var(--my, 50%));
+
+/* =========================================
+   TOP INFORMATION
+   ========================================= */
+
+.projects__overlay-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.projects__card-body {
-  padding: var(--space-3);
-}
 
-.projects__card-blurb {
-  color: var(--color-ink-soft);
-  max-width: 52ch;
-}
+/* =========================================
+   PROJECT NUMBER
+   ========================================= */
 
-.projects__card-meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-2);
-  margin: var(--space-3) 0 0;
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--color-line);
-}
-
-.projects__card-meta dt {
+.projects__overlay-index {
+  display: block;
+  margin-bottom: 18px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-ink-soft);
-  margin-bottom: 0.2em;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.projects__card-meta dd {
+
+/* =========================================
+   PROJECT NAME
+   ========================================= */
+
+.projects__overlay-content h3,
+.projects__overlay-top h3 {
+  margin: 0 0 12px;
+
+  font-family: var(--font-sans);
+
+  font-size: 34px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+
+  color: #fff;
+}
+
+
+/* =========================================
+   PROJECT DETAILS
+   ========================================= */
+
+.projects__overlay-content p,
+.projects__overlay-top p {
+  max-width: 390px;
+
   margin: 0;
-  font-size: var(--fs-small);
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.82);
 }
 
-.projects__card-link {
-  display: inline-block;
-  margin-top: var(--space-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-small);
-  color: var(--color-signal);
+
+/* =========================================
+   BOTTOM AREA
+   ========================================= */
+
+.projects__overlay-bottom {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: flex-start;
+
+  width: 100%;
 }
 
-/* Featured project: larger media, spans full width, meta laid out inline */
-.projects__card--featured .projects__card-media {
-  aspect-ratio: 21 / 9;
+
+/* =========================================
+   CASE STUDY BUTTON
+   ========================================= */
+
+.projects__case-study {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  min-height: 44px;
+
+  padding: 0 18px;
+
+  border-radius: 999px;
+
+  background: #fff;
+
+  color: #111;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  transition:
+    transform 250ms ease;
 }
 
-@media (min-width: 780px) {
-  .projects__grid {
-    grid-template-columns: repeat(2, 1fr);
+
+/* =========================================
+   ARROW
+   ========================================= */
+
+.projects__project-arrow {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  font-size: 16px;
+}
+
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.projects__project:hover .projects__project-overlay {
+  opacity: 0.85;
+  background-color: #383737;
+}
+
+
+.projects__project:hover .projects__project-media img {
+  transform: scale(1.045);
+}
+
+
+.projects__project:hover .projects__case-study {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 780px) {
+
+  .projects {
+    overflow: visible;
   }
 
-  .projects__card--featured {
-    grid-column: 1 / -1;
+
+  .projects__stage {
+    height: auto;
+
+    min-height: 0;
+
+    padding: 110px 20px 120px;
+
+    overflow: visible;
   }
 
-  .projects__card--featured h3 {
-    font-size: 1.75rem;
+
+  .projects__heading {
+    position: relative;
+
+    inset: auto;
+
+    min-height: 420px;
   }
 
-  .projects__card--featured .projects__card-meta {
-    grid-template-columns: repeat(3, minmax(0, 220px));
+
+  .projects__eyebrow {
+    position: static;
+
+    transform: none;
+
+    margin-bottom: 36px;
+  }
+
+
+  .projects__heading h2 {
+    font-size: clamp(64px, 18vw, 110px);
+
+    line-height: 0.86;
+
+    white-space: normal;
+  }
+
+
+  .projects__scroll {
+    margin-top: 34px;
+
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+
+  /* =========================================
+     MOBILE CARD FLOW
+     ========================================= */
+
+  .projects__cards {
+    position: relative;
+
+    inset: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 70px;
+  }
+
+
+  .projects__item {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    width: 100%;
+
+    transform: none !important;
+  }
+
+
+  .projects__project-media {
+    border-radius: 18px;
+  }
+
+
+  /*
+   * On mobile there is no hover,
+   * so the information remains visible.
+   */
+
+  .projects__project-overlay {
+    opacity: 1;
+
+    padding: 22px;
+  }
+
+
+  .projects__overlay-top h3 {
+    font-size: 28px;
+  }
+
+
+  .projects__overlay-top p {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .projects__project-media img,
+  .projects__project-overlay,
+  .projects__case-study {
+    transition: none;
   }
 }

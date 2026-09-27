@@ -1,9 +1,9 @@
-import { useLayoutEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import './Hero.css';
-import heroPortrait from '../../assets/images/hero-portrait.jpeg';
+import { useLayoutEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./Hero.css";
+import heroPortrait from "../../assets/images/hero-portrait.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +14,11 @@ const container = {
 
 const item = {
   hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.65, 0, 0.35, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.65, 0, 0.35, 1] },
+  },
 };
 
 function Hero() {
@@ -28,12 +32,22 @@ function Hero() {
     const mediaInner = mediaInnerRef.current;
 
     if (!hero || !media || !mediaInner) return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return undefined;
 
     const ctx = gsap.context(() => {
-      const moveX = gsap.quickTo(mediaInner, 'x', { duration: 0.7, ease: 'power3.out' });
-      const moveY = gsap.quickTo(mediaInner, 'y', { duration: 0.7, ease: 'power3.out' });
-      const rotate = gsap.quickTo(mediaInner, 'rotation', { duration: 0.8, ease: 'power3.out' });
+      const moveX = gsap.quickTo(mediaInner, "x", {
+        duration: 0.7,
+        ease: "power3.out",
+      });
+      const moveY = gsap.quickTo(mediaInner, "y", {
+        duration: 0.7,
+        ease: "power3.out",
+      });
+      const rotate = gsap.quickTo(mediaInner, "rotation", {
+        duration: 0.8,
+        ease: "power3.out",
+      });
 
       const handlePointerMove = (event) => {
         const rect = hero.getBoundingClientRect();
@@ -44,42 +58,49 @@ function Hero() {
         moveY(y * 8);
         rotate(x * 1.1);
 
-        media.style.setProperty('--hero-light-x', `${(x + 0.5) * 100}%`);
-        media.style.setProperty('--hero-light-y', `${(y + 0.5) * 100}%`);
+        media.style.setProperty("--hero-light-x", `${(x + 0.5) * 100}%`);
+        media.style.setProperty("--hero-light-y", `${(y + 0.5) * 100}%`);
       };
 
       const resetPointer = () => {
         moveX(0);
         moveY(0);
         rotate(0);
-        media.style.setProperty('--hero-light-x', '50%');
-        media.style.setProperty('--hero-light-y', '50%');
+        media.style.setProperty("--hero-light-x", "50%");
+        media.style.setProperty("--hero-light-y", "50%");
       };
 
-      hero.addEventListener('pointermove', handlePointerMove);
-      hero.addEventListener('pointerleave', resetPointer);
+      hero.addEventListener("pointermove", handlePointerMove);
+      hero.addEventListener("pointerleave", resetPointer);
 
       gsap.fromTo(
         media,
         { yPercent: 6, scale: 0.96, opacity: 0 },
-        { yPercent: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'power3.out', delay: 0.25 }
+        {
+          yPercent: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 1.1,
+          ease: "power3.out",
+          delay: 0.25,
+        },
       );
 
       gsap.to(media, {
         yPercent: -12,
         scale: 1.08,
-        ease: 'none',
+        ease: "none",
         scrollTrigger: {
           trigger: hero,
-          start: 'top top',
-          end: 'bottom top',
+          start: "top top",
+          end: "bottom top",
           scrub: 0.8,
         },
       });
 
       return () => {
-        hero.removeEventListener('pointermove', handlePointerMove);
-        hero.removeEventListener('pointerleave', resetPointer);
+        hero.removeEventListener("pointermove", handlePointerMove);
+        hero.removeEventListener("pointerleave", resetPointer);
       };
     }, hero);
 
@@ -103,7 +124,9 @@ function Hero() {
         initial="hidden"
         animate="show"
       >
-        <motion.p variants={item} className="hero__role">Frontend Software Engineer</motion.p>
+        <motion.p variants={item} className="hero__role">
+          Frontend Software Engineer
+        </motion.p>
 
         <motion.h1 variants={item}>
           Mohammad Shafiqur
@@ -112,14 +135,17 @@ function Hero() {
         </motion.h1>
 
         <motion.p variants={item} className="hero__intro">
-          I build interfaces where the code holds up as well as the
-          interaction feels. React on the front end, an eye for UI/UX
-          underneath.
+          I build interfaces where the code holds up as well as the interaction
+          feels. React on the front end, an eye for UI/UX underneath.
         </motion.p>
 
         <motion.div variants={item} className="hero__actions">
-          <a href="#work" className="hero__cta-primary">See my work</a>
-          <a href="#contact" className="hero__cta-secondary">Get in touch</a>
+          <a href="#work" className="hero__cta-primary">
+            See my work
+          </a>
+          <a href="#contact" className="hero__cta-secondary">
+            Get in touch
+          </a>
         </motion.div>
       </motion.div>
 

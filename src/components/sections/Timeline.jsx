@@ -9,7 +9,7 @@ const TIMELINE_ITEMS = [
   {
     year: "2026",
     type: "Work",
-    title: "Web Developer",
+    title: "Software Engineer Forntend",
     organization: "Accelosys",
     period: "Feb 2026 — Present",
     side: "left",
